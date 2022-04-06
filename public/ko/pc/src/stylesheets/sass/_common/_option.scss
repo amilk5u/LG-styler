@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* Font style setting */
-$gordita:"Gordita", Arial, Apple SD Gothic Neo, sans-serif;
+$LG_Smart:"LG_Smart", Arial, Apple SD Gothic Neo, sans-serif;
 
 /* Point color setting */
 $black:#000;
@@ -48,7 +48,7 @@ $btn-black:$black;
 /**
  * BASE SETTING
  */
-$base-font:"Gordita", "Apple SD Gothic Neo", AppleGothic, Arial, Helvetica, sans-serif;
+$base-font:$LG_Smart;
 $base-font-size:20px;
 $base-font-color:$black;
 
@@ -56,5 +56,5 @@ $letter-spacing:0;
 
 $light:300;
 $regular:400;
-$medium:500;
-$bold:700;
+$semiBold:500;
+$bold:600;

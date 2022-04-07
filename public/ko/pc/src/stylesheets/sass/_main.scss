@@ -8,7 +8,7 @@ section {
    padding:41px 0 42px; background-color: #F8F8F8;
 	.inner_wrap {
 		position: relative;
-		> img { width: 100%; }
+		& > img { width: 100%; }
 	}
 	.txt_wrap {
 		width: 38%; position: absolute; top: 15%; left: 6%;
@@ -18,14 +18,16 @@ section {
 }
 .sec2 {
 	.top_nav { 
-      text-align: center; margin: 0 auto; padding: em(27) 0;  border-top:1px solid #F0F0F0; border-bottom:1px solid #F0F0F0;
+      text-align: center; margin: 0 auto; padding: em(27) 0;  border-top:1px solid #F0F0F0; 
+      border-bottom:1px solid #F0F0F0;
       @include boxSizing;
       ul { display: block; margin: 0 auto; width: fit-content; @extend %clearfix; }
       li {
          float: left; margin: 0 0 0 em(10);
          &:first-of-type { margin: 0; }
          button { 
-            display: block; padding: em(13) em(40); border: 1px solid #D9D9D9; font-size: em(18); color: #848484; font-weight: $semiBold;
+            display: block; padding: em(13) em(40); border: 1px solid #D9D9D9; font-size: em(18); 
+            color: #848484; font-weight: $semiBold;
             @include borderRadius(100px); 
          }
       }
@@ -54,7 +56,7 @@ section {
          width: em(180); height:em(160); float: left;  padding:em(24) 0 em(17); border-left: 1px solid #F0F0F0;
          @include boxSizing;
          &:first-of-type { border-left:0; }
-         > div { height: em(85); display: flex; align-items: center; justify-content: center; }
+         & > div { height: em(85); display: flex; align-items: center; justify-content: center; }
          p { font-size: em(18); font-weight: $bold; color:#4C4C4E; }
          .bedding {img { width: em(73); }}
          .dress {img { width: em(74); }}
@@ -65,19 +67,20 @@ section {
       }
    }
    .video_wrap {
-      padding: em(60) 0 0; background-color: $white;
+      padding: em(60) 0; background-color: $white;
       .view_video {
          width: 71.56%; margin: 0 auto;
          img { width:100%; }
          p { padding:em(15) 0 0; font-size: em(28); font-weight: $semiBold; color:#313131; }
       }
       .sb_video {
-         width: 77.81%; text-align: center; margin:0 auto;
-         ul { padding: em(40) 0 0 ; display: inline-block; @extend %clearfix; }
+         width: 77.81%; height:0; padding:0 0 26.8%; text-align: center; margin: 0 auto; overflow: hidden; position: relative;
+         &.more_add { height: auto; padding:0; }
+         ul { padding: em(40) 0 em(90); display: inline-block; @extend %clearfix; }
          li { 
             width: 24.09%; float: left; margin: 0 0 0 1.20%; text-align: left;
             &:nth-of-type(4n+1) { margin:0; }
-            p { padding: em(15) 0 em(50); font-size: em(28); color: #939393; font-weight: $semiBold; }
+            p { padding: em(15) 0 em(70); font-size: em(28); color: #939393; font-weight: $semiBold; }
             img { width:100%; }
             div { overflow: hidden; @include borderRadius(12px); }
             &.no_open {
@@ -94,20 +97,45 @@ section {
          }
       }
       .more_video_btn {
+         width: 100%; position: absolute; text-align: center; bottom:0; background-color:$white;
          button { 
-            border: em(4) solid #C80651; padding: em(23) em(135) em(23) em(85); display: block; 
-            font-size: em(30); font-weight: $semiBold; color: #C80651;
-            position: relative;
+            border: em(4) solid #C80651; padding: em(23) em(135) em(23) em(85); display: inline-block; 
+            font-size: em(30); font-weight: $semiBold; color: #C80651; position: relative;
             &:after {
-               width:em(30); height:em(30);
-               content: ""; display: block;
-               position: absolute; right:0; top:0;
-               background: url(./../../images/main/more_video_icon.png) 50% 50% no-repeat;
-               background-size: cover;
+               width: em(30); height: em(30); content: ""; display: block; position: absolute; right: em(87); top: em(25);
+               background: url(./../../images/main/more_video_icon.png) 50% 50% no-repeat; background-size: cover;
             }
             @include boxSizing;
             @include borderRadius(em(50));
          }
+      }
+   }
+}
+.sec4 {
+   background-color: #EDEDED;
+   .inner_wrap {
+      text-align: center; padding:0 0 em(120);
+      h1 { padding:em(80) 0 0; }
+      > div { padding:em(66) 0 0; }
+      dl {
+         border: em(2) solid #E6E6E6; background-color: $white; text-align: left; margin: em(10) 0 0;
+         @include boxSizing;
+         @include borderRadius(em(14));
+      }
+      dt {
+         padding: 0 0 0 em(133); border-bottom: em(2) solid #E6E6E6; position: relative;
+         &:after {
+            width: em(24); height: em(15); position: absolute; right: em(60); top: em(40); content: ""; display: block;
+            background: url(./../../images/main/question_icon.png) 50% 50% no-repeat; background-size: cover;
+         }
+         &:before { position: absolute; display: block; content: "Q"; left: em(60); top: em(27); font-size: em(40); font-weight: $bold; }
+         button { width: 100%; text-align: left; padding: em(32) 0; display: block; }
+         p { font-size: em(34); font-weight: $regular; }
+      }
+      dd {
+         padding:em(32) 0 em(32) em(133); position: relative;
+         &:before { position: absolute; display: block; content: "A"; left: em(60); color:#C80651; top: em(25); font-size: em(40); font-weight: $bold; }
+         p { width: 45%; font-size: em(28); font-weight: $regular; color: #939393; line-height: em(35); }
       }
    }
 }

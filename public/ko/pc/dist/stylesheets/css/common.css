@@ -252,7 +252,7 @@ section h1 { color: #2E2E2E; font-size: 2rem; }
 
 .sec3 .about_elm li .padding img { width: 3.1rem; }
 
-.sec3 .video_wrap { padding: 3rem 0 0; background-color: #fff; }
+.sec3 .video_wrap { padding: 3rem 0; background-color: #fff; }
 
 .sec3 .video_wrap .view_video { width: 71.56%; margin: 0 auto; }
 
@@ -260,15 +260,17 @@ section h1 { color: #2E2E2E; font-size: 2rem; }
 
 .sec3 .video_wrap .view_video p { padding: 0.75rem 0 0; font-size: 1.4rem; font-weight: 500; color: #313131; }
 
-.sec3 .video_wrap .sb_video { width: 77.81%; text-align: center; margin: 0 auto; }
+.sec3 .video_wrap .sb_video { width: 77.81%; height: 0; padding: 0 0 26.8%; text-align: center; margin: 0 auto; overflow: hidden; position: relative; }
 
-.sec3 .video_wrap .sb_video ul { padding: 2rem 0 0; display: inline-block; }
+.sec3 .video_wrap .sb_video.more_add { height: auto; padding: 0; }
+
+.sec3 .video_wrap .sb_video ul { padding: 2rem 0 4.5rem; display: inline-block; }
 
 .sec3 .video_wrap .sb_video li { width: 24.09%; float: left; margin: 0 0 0 1.20%; text-align: left; }
 
 .sec3 .video_wrap .sb_video li:nth-of-type(4n+1) { margin: 0; }
 
-.sec3 .video_wrap .sb_video li p { padding: 0.75rem 0 2.5rem; font-size: 1.4rem; color: #939393; font-weight: 500; }
+.sec3 .video_wrap .sb_video li p { padding: 0.75rem 0 3.5rem; font-size: 1.4rem; color: #939393; font-weight: 500; }
 
 .sec3 .video_wrap .sb_video li img { width: 100%; }
 
@@ -278,9 +280,37 @@ section h1 { color: #2E2E2E; font-size: 2rem; }
 
 .sec3 .video_wrap .sb_video li.no_open div:before { width: 100%; height: 100%; display: block; padding: 4rem 0 0; content: "Coming Soon"; position: absolute; left: 0; top: 0; background-color: rgba(0, 0, 0, 0.8); color: #fff; font-weight: 600; font-size: 1.5rem; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
-.sec3 .video_wrap .more_video_btn button { border: 0.2rem solid #C80651; padding: 1.15rem 6.75rem 1.15rem 4.25rem; display: block; font-size: 1.5rem; font-weight: 500; color: #C80651; position: relative; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-border-radius: 2.5rem; -moz-border-radius: 2.5rem; border-radius: 2.5rem; }
+.sec3 .video_wrap .more_video_btn { width: 100%; position: absolute; text-align: center; bottom: 0; background-color: #fff; }
 
-.sec3 .video_wrap .more_video_btn button:after { width: 1.5rem; height: 1.5rem; content: ""; display: block; position: absolute; right: 0; top: 0; background: url(./../../images/main/more_video_icon.png) 50% 50% no-repeat; background-size: cover; }
+.sec3 .video_wrap .more_video_btn button { border: 0.2rem solid #C80651; padding: 1.15rem 6.75rem 1.15rem 4.25rem; display: inline-block; font-size: 1.5rem; font-weight: 500; color: #C80651; position: relative; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-border-radius: 2.5rem; -moz-border-radius: 2.5rem; border-radius: 2.5rem; }
+
+.sec3 .video_wrap .more_video_btn button:after { width: 1.5rem; height: 1.5rem; content: ""; display: block; position: absolute; right: 4.35rem; top: 1.25rem; background: url(./../../images/main/more_video_icon.png) 50% 50% no-repeat; background-size: cover; }
+
+.sec4 { background-color: #EDEDED; }
+
+.sec4 .inner_wrap { text-align: center; padding: 0 0 6rem; }
+
+.sec4 .inner_wrap h1 { padding: 4rem 0 0; }
+
+.sec4 .inner_wrap > div { padding: 3.3rem 0 0; }
+
+.sec4 .inner_wrap dl { border: 0.1rem solid #E6E6E6; background-color: #fff; text-align: left; margin: 0.5rem 0 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-border-radius: 0.7rem; -moz-border-radius: 0.7rem; border-radius: 0.7rem; }
+
+.sec4 .inner_wrap dt { padding: 0 0 0 6.65rem; border-bottom: 0.1rem solid #E6E6E6; position: relative; }
+
+.sec4 .inner_wrap dt:after { width: 1.2rem; height: 0.75rem; position: absolute; right: 3rem; top: 2rem; content: ""; display: block; background: url(./../../images/main/question_icon.png) 50% 50% no-repeat; background-size: cover; }
+
+.sec4 .inner_wrap dt:before { position: absolute; display: block; content: "Q"; left: 3rem; top: 1.35rem; font-size: 2rem; font-weight: 600; }
+
+.sec4 .inner_wrap dt button { width: 100%; text-align: left; padding: 1.6rem 0; display: block; }
+
+.sec4 .inner_wrap dt p { font-size: 1.7rem; font-weight: 400; }
+
+.sec4 .inner_wrap dd { padding: 1.6rem 0 1.6rem 6.65rem; position: relative; }
+
+.sec4 .inner_wrap dd:before { position: absolute; display: block; content: "A"; left: 3rem; color: #C80651; top: 1.25rem; font-size: 2rem; font-weight: 600; }
+
+.sec4 .inner_wrap dd p { width: 45%; font-size: 1.4rem; font-weight: 400; color: #939393; line-height: 1.75rem; }
 
 /* common css */
 ::selection { background: #ccc; color: #000; text-shadow: none; }

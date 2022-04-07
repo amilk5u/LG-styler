@@ -243,12 +243,12 @@
 
 
 // Break Point (Desktop First 기준 내림차순 설정)
-$desktop-width: 1650px;
-$tablet-width: 1320px;
+$desktop-width: 1600px;
+$tablet-width: 1024px;
 $mob-width: 768px;
 
-// PC large
-@mixin pc-small {
+// Desktop
+@mixin desktop {
 	@media screen and (max-width: #{$desktop-width}) {
 		@content;
 	}
@@ -256,8 +256,8 @@ $mob-width: 768px;
 
 // --------------------------------------------------
 
-// 태블릿
-@mixin tab {
+// Tablet
+@mixin tablet {
 	@media screen and (max-width: #{$tablet-width}) {
 		@content;
 	}
@@ -265,8 +265,8 @@ $mob-width: 768px;
 
 // --------------------------------------------------
 
-// 모바일
-@mixin mob {
+// Mobile
+@mixin mobile {
 	@media screen and (max-width: #{$mob-width}) {
 		@content;
 	}
@@ -277,32 +277,72 @@ $mob-width: 768px;
 	@return #{$remSize}rem;
 }
 
+// 78
+/* desktop */
+@media only screen and (max-width:1600px) {
+	html {font-size:20px !important;}
+}
+@media only screen and (max-width:1522px) {
+	html {font-size:19px !important;}
+}
+@media only screen and (max-width:1444px) {
+	html {font-size:18px !important;}
+}
+@media only screen and (max-width:1366px) {
+	html {font-size:17px !important;}
+}
+@media only screen and (max-width:1288px) {
+	html {font-size:16px !important;}
+}
+@media only screen and (max-width:1210px) {
+   html {font-size:15px !important;}
+}
+@media only screen and (max-width:1132px) {
+   html {font-size:14px !important;}
+}
+/* tablet */
+@media only screen and (max-width:1054px) {
+	html {font-size:13px !important;}
+}
+@media only screen and (max-width:976px) {
+	html {font-size:12px !important;}
+}
+@media only screen and (max-width:898px) {
+	html {font-size:11px !important;}
+}
+@media only screen and (max-width:820px) {
+	html {font-size:10px !important;}
+}
+/* mobile */
 @media only screen and (max-width:768px) {
 	html {font-size:18px !important;}
 }
-@media only screen and (max-width:718px) {
+@media only screen and (max-width:723.7px) {
 	html {font-size:17px !important;}
 }
-@media only screen and (max-width:669px) {
+@media only screen and (max-width:679.4px) {
 	html {font-size:16px !important;}
 }
-@media only screen and (max-width:620px) {
+@media only screen and (max-width:635.1px) {
 	html {font-size:15px !important;}
 }
-@media only screen and (max-width:571px) {
+@media only screen and (max-width:590.8px) {
 	html {font-size:14px !important;}
 }
-@media only screen and (max-width:522px) {
+@media only screen and (max-width:546.5px) {
 	html {font-size:13px !important;}
 }
-@media only screen and (max-width:473px) {
+@media only screen and (max-width:502.2px) {
 	html {font-size:12px !important;}
 }
-@media only screen and (max-width:424px) {
+@media only screen and (max-width:457.9px) {
 	html {font-size:11px !important;}
 }
-@media only screen and (max-width:375px) {
+@media only screen and (max-width:413.6px) {
 	html {font-size:10px !important;}
+}
+@media only screen and (max-width:369.3px) {
+	html {font-size:9px !important;}
 }
 @media only screen and (max-width:325px) {
 	html {font-size:8px !important;}

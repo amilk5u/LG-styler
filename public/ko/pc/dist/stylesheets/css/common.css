@@ -230,15 +230,11 @@ section h1 { color: #2E2E2E; font-size: 2rem; }
 
 .sec2 .top_nav li button:hover:before, .sec2 .top_nav li button:focus:before { border-color: #c80651; }
 
-.sec2 .inner_wrap { max-width: 1600px; margin: 0 auto; padding: 0 2.5rem; }
+.sec2 .inner_wrap { max-width: 1600px; margin: 0 auto; padding: 0 2.5rem; /* .swiper { &.max_item { li {  margin: 0 0 0 1.56%;  &:first-of-type { margin: 0; } } } } */ }
 
 .sec2 .inner_wrap h1 { padding: 4.75rem 0 0; text-align: center; }
 
 .sec2 .inner_wrap ul { width: fit-content; margin: 0 auto; padding: 3.4rem 0 4.6rem; }
-
-.sec2 .inner_wrap .swiper.max_item li { margin: 0 0 0 1.56%; }
-
-.sec2 .inner_wrap .swiper.max_item li:first-of-type { margin: 0; }
 
 .sec2 .inner_wrap li { width: 18.75%; float: left; }
 
@@ -259,7 +255,15 @@ section h1 { color: #2E2E2E; font-size: 2rem; }
 .sec2 .inner_wrap li.no_open p { color: #939393; }
 
 @media screen and (max-width: 768px) { .sec2 .top_nav li { margin: 0 0 0 0.5rem; }
-  .sec2 .top_nav li button { padding: 0.3rem 1.25rem 0.4rem; font-size: 1.3rem; line-height: 2rem; } }
+  .sec2 .top_nav li button { padding: 0.3rem 1.25rem 0.4rem; font-size: 1.3rem; line-height: 2rem; }
+  .sec2 .inner_wrap { padding: 0 2rem; }
+  .sec2 .inner_wrap h1 { padding: 4.15rem 0 0; }
+  .sec2 .inner_wrap ul { flex-wrap: wrap; justify-content: space-between; padding: 3.35rem 0 0; }
+  .sec2 .inner_wrap ul:after { display: none; }
+  .sec2 .inner_wrap li { width: 47.5%; }
+  .sec2 .inner_wrap li strong { padding: 1rem 0 0; font-size: 2rem; }
+  .sec2 .inner_wrap li p { padding: 0.5rem 0 2.5rem; font-size: 1.6rem; line-height: 1.9rem; }
+  .sec2 .inner_wrap li.no_open div:before { padding: 30% 0 0; font-size: 2.1rem; font-weight: 500; } }
 
 .sec3 .inner_wrap { max-width: 1600px; margin: 0 auto; }
 
@@ -267,9 +271,9 @@ section h1 { color: #2E2E2E; font-size: 2rem; }
 
 .sec3 .about_elm h1 { padding: 4.75rem 0 0; }
 
-.sec3 .about_elm p { padding: 1rem 0 0; font-size: 1.2rem; line-height: 1.4rem; font-weight: 400; }
+.sec3 .about_elm .sb_txt { padding: 1rem 0 0; font-size: 1.2rem; line-height: 1.4rem; font-weight: 400; }
 
-.sec3 .about_elm p strong { font-weight: 500; }
+.sec3 .about_elm .sb_txt strong { font-weight: 500; }
 
 .sec3 .about_elm ul { padding: 2.5rem 0 5rem; display: inline-block; margin: 0 auto; }
 
@@ -279,7 +283,7 @@ section h1 { color: #2E2E2E; font-size: 2rem; }
 
 .sec3 .about_elm li > div { height: 4.25rem; display: flex; align-items: center; justify-content: center; }
 
-.sec3 .about_elm li p { font-size: 0.9rem; font-weight: 600; color: #4C4C4E; }
+.sec3 .about_elm li p { padding: 1rem 0 0; font-size: 0.9rem; font-weight: 600; color: #4C4C4E; }
 
 .sec3 .about_elm li .bedding img { width: 3.65rem; }
 
@@ -326,6 +330,23 @@ section h1 { color: #2E2E2E; font-size: 2rem; }
 .sec3 .video_wrap .more_video_btn button { border: 0.2rem solid #C80651; padding: 1.15rem 6.75rem 1.15rem 4.25rem; display: inline-block; font-size: 1.5rem; font-weight: 500; color: #C80651; position: relative; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-border-radius: 2.5rem; -moz-border-radius: 2.5rem; border-radius: 2.5rem; }
 
 .sec3 .video_wrap .more_video_btn button:after { width: 1.5rem; height: 1.5rem; content: ""; display: block; position: absolute; right: 4.35rem; top: 1.25rem; background: url(./../../images/main/more_video_icon.png) 50% 50% no-repeat; background-size: cover; }
+
+@media screen and (max-width: 768px) { .sec3 .about_elm h1 { padding: 4.15rem 0 0; }
+  .sec3 .about_elm .sb_txt { width: 68%; margin: 0 auto; padding: 2.4rem 0 0; font-size: 2rem; line-height: 2.4rem; }
+  .sec3 .about_elm ul { width: 72.39%; display: flex; flex-wrap: wrap; justify-content: space-between; }
+  .sec3 .about_elm ul:after { display: none; }
+  .sec3 .about_elm li { border-left: 0; float: initial; box-sizing: content-box; }
+  .sec3 .about_elm li:nth-of-type(n+4) { padding: 5% 0 0; }
+  .sec3 .about_elm li p { font-size: 1.5rem; }
+  .sec3 .about_elm li .bedding img { width: 4.15rem; }
+  .sec3 .about_elm li .dress img { width: 4.2rem; }
+  .sec3 .about_elm li .cotton_toy img { width: 4.15rem; }
+  .sec3 .about_elm li .coat img { width: 3.7rem; }
+  .sec3 .about_elm li .leather img { width: 3.65rem; }
+  .sec3 .about_elm li .padding img { width: 3.6rem; }
+  .sec3 .video_wrap { padding: 4rem 2rem 0; }
+  .sec3 .video_wrap .view_video { width: 100%; }
+  .sec3 .video_wrap .view_video p { font-size: 2rem; } }
 
 .sec4 { background-color: #EDEDED; }
 

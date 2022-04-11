@@ -60,7 +60,7 @@ section {
             &:hover,&:focus { 
                color: #C80651; border-color: #c80651;
                &:before { border-color: #c80651; }
-             }
+            }
          }       
       }
    }
@@ -68,14 +68,14 @@ section {
 		max-width: 1600px; margin: 0 auto; padding:0 em(50);
       h1 { padding: em(95) 0 0; text-align: center; }
 		ul { width:fit-content; margin:0 auto; padding: em(68) 0 em(92); @extend %clearfix; }
-      .swiper {
+      /* .swiper {
          &.max_item {
             li { 
                margin: 0 0 0 1.56%; 
                &:first-of-type { margin: 0; }
             }
          }
-      }
+      } */
 		li {
 			width: 18.75%; float: left; 
          img { width:100%; }
@@ -100,28 +100,27 @@ section {
       .top_nav { 
          li {
             margin: 0 0 0 em(10);
-            button { padding: em(6) em(25) em(8); font-size: em(26); line-height: em(40); }     
+            button { 
+               padding: em(6) em(25) em(8); font-size: em(26); line-height: em(40); 
+               // border: em(2) solid #D9D9D9;
+            }
          }
       }
       .inner_wrap {
-         h1 { padding: em(95) 0 0; text-align: center; }
-         ul { width:fit-content; margin:0 auto; padding: em(68) 0 em(92); @extend %clearfix; }
-         .swiper {
-            &.max_item {
-               li { 
-                  
-               }
-            }
+         padding:0 em(40);
+         h1 { padding: em(83) 0 0; }
+         ul { 
+            flex-wrap: wrap; justify-content: space-between; padding: em(67) 0 0; 
+            &:after { display: none; }
          }
          li {
-            strong { display: block; padding: em(15) 0 0; font-size: em(30); font-weight: $semiBold; color: #313131; }
-            p { padding: em(7) 0 0; font-size: em(20); color: #4C4C4E; font-weight: $regular; line-height: em(24); }
+            width: 47.5%;
+            strong { padding: em(20) 0 0; font-size: em(40); }
+            p { padding: em(10) 0 em(50); font-size: em(32); line-height: em(38); }
             &.no_open {
                div { 
-                  &:before {
-
-                  }
-                }
+                  &:before { padding: 30% 0 0; font-size: em(42); font-weight: $semiBold; }
+               }
             }
          }
       }
@@ -132,7 +131,7 @@ section {
    .about_elm {
       background-color: #F9F9F9; text-align: center;
       h1 { padding:em(95) 0 0; }
-      p { 
+      .sb_txt { 
          padding: em(20) 0 0; font-size: em(24); line-height: em(28); font-weight: $regular;
          strong { font-weight: $semiBold; }
       }
@@ -142,7 +141,7 @@ section {
          @include boxSizing;
          &:first-of-type { border-left:0; }
          & > div { height: em(85); display: flex; align-items: center; justify-content: center; }
-         p { font-size: em(18); font-weight: $bold; color:#4C4C4E; }
+         p { padding:em(20) 0 0; font-size: em(18); font-weight: $bold; color:#4C4C4E; }
          .bedding {img { width: em(73); }}
          .dress {img { width: em(74); }}
          .cotton_toy {img { width: em(73); }}
@@ -195,7 +194,45 @@ section {
          }
       }
    }
+   @include mobile() {
+      .about_elm {
+         h1 { padding:em(83) 0 0; }
+         .sb_txt { 
+            width:68%; margin:0 auto; padding:em(48) 0 0;
+            font-size: em(40); line-height: em(48); 
+         }
+         ul { 
+            width: 72.39%; display: flex; flex-wrap: wrap; justify-content: space-between; 
+            &:after { display: none; }
+         }
+         li { 
+            border-left: 0; float: initial; box-sizing: content-box;
+            &:nth-of-type(n+4) { padding: 5% 0 0; }
+            p { font-size: em(30);}
+            .bedding {img { width: em(83); }}
+            .dress {img { width: em(84); }}
+            .cotton_toy {img { width: em(83); }}
+            .coat {img { width: em(74); }}
+            .leather {img { width: em(73); }}
+            .padding {img { width: em(72); }}
+         }
+      }
+      .video_wrap {
+         padding:em(80) em(40) 0; 
+         .view_video {
+            width: 100%;
+            p { font-size: em(40);}
+         }
+      }
+   }
 }
+
+
+
+
+
+
+
 .sec4 {
    background-color: #EDEDED;
    .inner_wrap {

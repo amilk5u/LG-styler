@@ -62,6 +62,29 @@ function main() {
       },
    });
 
+   const articleLine = new Swiper(".article_line", {
+      slidesPerView: 1,
+      spaceBetween: 40,
+      scrollbar: {
+         el: ".swiper-scrollbar",
+         draggable: true,
+      },
+      breakpoints: {
+         768: {
+            slidesPerView: 2,
+            spaceBetween: 43,
+         },
+         900: {
+            slidesPerView: 3,
+            spaceBetween: 43,
+         },
+         1200: {
+            slidesPerView: 4,
+            spaceBetween: 43,
+         },
+      },
+   });
+
    function tabNav() {
       // const _sectionHeightArr = [];
       // let sectionTotalHeight = 0;

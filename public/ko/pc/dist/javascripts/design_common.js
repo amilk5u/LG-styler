@@ -112,7 +112,7 @@ function main() {
           sectionTotalHeight += $("section").eq(i + 1).outerHeight()
        } */
 
-      $topNav.find("li button").removeClass("active");
+     /*  $topNav.find("li button").removeClass("active");
       if (winSc > $header.outerHeight() + $(".sec1").outerHeight() && winSc < $AboutStyler.offset().top - $topNav.outerHeight()) {
          $topNav.find("li:eq(0) button").addClass("active");
       } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() + $ClothingCareTips.outerHeight() && winSc < $FAQ.offset().top - $topNav.outerHeight()) {
@@ -121,7 +121,7 @@ function main() {
          $topNav.find("li:eq(2) button").addClass("active");
       } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() + $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() + $StylerLineup.outerHeight()) {
          $topNav.find("li:eq(3) button").addClass("active");
-      }
+      } */
    }
 
    // Top 네비게이션

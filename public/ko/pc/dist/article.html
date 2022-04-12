@@ -15,6 +15,7 @@
    <script src="./javascripts/jquery-1.8.2.min.js"></script>
 </head>
 <body>
+   <div class="fix">0</div>
    <div class="guide_line">
       <span class="guide_center"></span>
    </div>
@@ -22,16 +23,127 @@
       <!--header-->
       <header>header</header>
       <!--//header-->
-      <!-- container -->
-      <div>
-      </div>
-      <!-- //container -->
-       <!--footer-->
-      <footer>footer</footer>
-      <!--//footer-->
-      <script src="./javascripts/plugin.js"></script>
-      <script src="./javascripts/design_common.js"></script>
+<!-- container -->
+<div class="article_wrap">
+   <nav class="top_nav">
+      <ul>
+         <li><button type="button">Clothing Care Tips</button></li>
+         <li><button type="button">About Styler</button></li>
+         <li><button type="button">FAQ</button></li>
+         <li><button type="button">Styler Lineup</button></li>
+      </ul>
+   </nav>
+   <div id="intro" class="group sec1">
+         <strong>5 Easy Ways to Get Wrinkles Out of Clothes Without an Iron</strong>
+         <div class="img_wrap">
+            <img src="./images/main/article_visual_img.png" alt="">
+         </div>
+         <p> ​No one wants to wear wrinkled clothes, but what if you don't have an iron? Fortunately, there are several easy ways to remove wrinkles from clothes, even without an iron. Find our top 5 below. </p>
+         <ul>
+            <li>Hair Dryer</li>
+            <li>Flat Iron or Hair Straightener </li>
+            <li>Shower</li>
+            <li>Wrinkle Remover Spray</li>
+            <li>LG Styler</li>
+         </ul>
+         <p> Have you ever pulled out the shirt you’re planning to wear only to find it’s covered in wrinkles? We certainly have! That’s why we’ve complied the best and easiest ways to make your clothes wrinkle-free – without the need for an iron! </p>
    </div>
+   <div id="strength" class="group sec2">
+      <ul>
+         <li>
+            <span>1.</span>
+            <strong>Smooth Out Wrinkles with a Hair Dryer</strong>
+            <p> Please I’m sure many of you have a hair dryer handy in the bathroom, but how many of you have ever thought it could help you remove wrinkles? It’s actually pretty straightforward, just turn on your hair dryer and point it at the piece of clothing you wish to remove the wrinkles from. You can use your hand to help flatten out the clothes for an even smoother appearance. it in a level, not humid environment. </p>
+         </li>
+         <li>
+            <span>2.</span>
+            <strong>Smooth Out Wrinkles with a Hair Dryer</strong>
+            <p> Please I’m sure many of you have a hair dryer handy in the bathroom, but how many of you have ever thought it could help you remove wrinkles? It’s actually pretty straightforward, just turn on your hair dryer and point it at the piece of clothing you wish to remove the wrinkles from. You can use your hand to help flatten out the clothes for an even smoother appearance. it in a level, not humid environment. </p>
+         </li>
+         <li>
+            <span>3.</span>
+            <strong>Smooth Out Wrinkles with a Hair Dryer</strong>
+            <p> Please I’m sure many of you have a hair dryer handy in the bathroom, but how many of you have ever thought it could help you remove wrinkles? It’s actually pretty straightforward, just turn on your hair dryer and point it at the piece of clothing you wish to remove the wrinkles from. You can use your hand to help flatten out the clothes for an even smoother appearance. it in a level, not humid environment. </p>
+         </li>
+         <li>
+            <span>4.</span>
+            <strong>Smooth Out Wrinkles with a Hair Dryer</strong>
+            <p> Please I’m sure many of you have a hair dryer handy in the bathroom, but how many of you have ever thought it could help you remove wrinkles? It’s actually pretty straightforward, just turn on your hair dryer and point it at the piece of clothing you wish to remove the wrinkles from. You can use your hand to help flatten out the clothes for an even smoother appearance. it in a level, not humid environment. </p>
+         </li>
+         <li>
+            <span>5.</span>
+            <strong>Smooth Out Wrinkles with a Hair Dryer</strong>
+            <p> Please I’m sure many of you have a hair dryer handy in the bathroom, but how many of you have ever thought it could help you remove wrinkles? It’s actually pretty straightforward, just turn on your hair dryer and point it at the piece of clothing you wish to remove the wrinkles from. You can use your hand to help flatten out the clothes for an even smoother appearance. it in a level, not humid environment. </p>
+         </li>
+      </ul>
+   </div>
+</div>
+<!-- //container --> <!--footer-->
+<footer>footer</footer>
+<!--//footer-->
+<!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+<script>
+   var tag = document.createElement('script');
+   tag.src = "https://www.youtube.com/iframe_api";
+   var firstScriptTag = document.getElementsByTagName('script')[0];
+   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+   var idAry = [],
+      urlAry = [],
+      objAry = [];
+   var objAry;
+   var $ytPlayerCustom = $(".yt_player");
+   var $ytPlayBtn = $(".yt_play_btn");
+   let videoData;
+   let imgUrl;
+   const li = $(".sb_video").find("li");
+   const $videoWrap = $("#AboutStyler").find(".video_wrap");
+   var player;
+
+   /* 클릭 이벤트 */
+   li.on("click", function () {
+      let _this = $(this);
+      videoData = _this.find(".video_data").data("url");
+      // imgUrl = _this.find("img").attr("src");
+      // $videoWrap.find(".img_wrap").attr("style", "background-image:url(" + imgUrl + ");");
+      
+      // $videoWrap.find(".yt_player").attr("data-url", videoData);
+     /*  player = new YT.Player('player', {
+         videoId: videoData,
+         events: {
+            'onStateChange': onPlayerStateChange
+         }
+      }); */
+      onYouTubeIframeAPIReady(videoData)
+   });
+
+   function onYouTubeIframeAPIReady(dataUrl) {
+      player = new YT.Player('player', {
+         videoId: videoData,
+         events: {
+            'onStateChange': onPlayerStateChange
+         }
+      });
+   }
+
+   function onPlayerStateChange(event) {
+      if (event.data === 2) {
+         TweenMax.to($(event.target.h).siblings(".img_wrap"), .3, { opacity: 1, display: "block" });
+         TweenMax.to($(event.target.h).siblings(".yt_play_btn"), .3, { opacity: 1, display: "block" });
+      } else if (event.data === 1) {
+         TweenMax.to($(event.target.h).siblings(".img_wrap"), .3, { opacity: 0, display: "none" });
+         TweenMax.to($(event.target.h).siblings(".yt_play_btn"), .3, { opacity: 0, display: "none" });
+      } else if (event.data === 3 || event.data === 5) {
+         return false;
+      }
+   }
+
+   $(".yt_play_btn").on("click", function () {
+      player.playVideo();
+   });
+</script>
+<script src="./javascripts/plugin.js"></script>
+<script src="./javascripts/design_common.js"></script>
+</div>
 </body>
 </html>
-

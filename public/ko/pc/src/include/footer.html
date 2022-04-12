@@ -1,8 +1,69 @@
-      <!--footer-->
-      <footer>footer</footer>
-      <!--//footer-->
-      <script src="./javascripts/plugin.js"></script>
-      <script src="./javascripts/design_common.js"></script>
-   </div>
+<!--footer-->
+<footer>footer</footer>
+<!--//footer-->
+<!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+<script>
+   var tag = document.createElement('script');
+   tag.src = "https://www.youtube.com/iframe_api";
+   var firstScriptTag = document.getElementsByTagName('script')[0];
+   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+   var idAry = [],
+      urlAry = [],
+      objAry = [];
+   var objAry;
+   var $ytPlayerCustom = $(".yt_player");
+   var $ytPlayBtn = $(".yt_play_btn");
+   let videoData;
+   let imgUrl;
+   const li = $(".sb_video").find("li");
+   const $videoWrap = $("#AboutStyler").find(".video_wrap");
+   var player;
+
+   /* 클릭 이벤트 */
+   li.on("click", function () {
+      let _this = $(this);
+      videoData = _this.find(".video_data").data("url");
+      // imgUrl = _this.find("img").attr("src");
+      // $videoWrap.find(".img_wrap").attr("style", "background-image:url(" + imgUrl + ");");
+      
+      // $videoWrap.find(".yt_player").attr("data-url", videoData);
+     /*  player = new YT.Player('player', {
+         videoId: videoData,
+         events: {
+            'onStateChange': onPlayerStateChange
+         }
+      }); */
+      onYouTubeIframeAPIReady(videoData)
+   });
+
+   function onYouTubeIframeAPIReady(dataUrl) {
+      player = new YT.Player('player', {
+         videoId: videoData,
+         events: {
+            'onStateChange': onPlayerStateChange
+         }
+      });
+   }
+
+   function onPlayerStateChange(event) {
+      if (event.data === 2) {
+         TweenMax.to($(event.target.h).siblings(".img_wrap"), .3, { opacity: 1, display: "block" });
+         TweenMax.to($(event.target.h).siblings(".yt_play_btn"), .3, { opacity: 1, display: "block" });
+      } else if (event.data === 1) {
+         TweenMax.to($(event.target.h).siblings(".img_wrap"), .3, { opacity: 0, display: "none" });
+         TweenMax.to($(event.target.h).siblings(".yt_play_btn"), .3, { opacity: 0, display: "none" });
+      } else if (event.data === 3 || event.data === 5) {
+         return false;
+      }
+   }
+
+   $(".yt_play_btn").on("click", function () {
+      player.playVideo();
+   });
+</script>
+<script src="./javascripts/plugin.js"></script>
+<script src="./javascripts/design_common.js"></script>
+</div>
 </body>
 </html>

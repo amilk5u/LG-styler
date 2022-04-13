@@ -14,7 +14,7 @@
    var player;
 
    /* 클릭 이벤트 */
-   li.on("click", function () {
+   li.on("click", function (e) {
       let _this = $(this);
       bol = true;
       videoData = _this.find(".video_data").data("url");
@@ -22,9 +22,14 @@
       $videoWrap.find(".img_wrap").attr("style", "background-image:url(" + imgUrl + ");");
       $videoWrap.find(".yt_player").attr("data-url", videoData);
       player.loadVideoById(videoData); // player 에 video data 넣기
+      // player.seekTo(0);
+      player.stopVideo();
+      // player.getPlayerState(-1);
+      // player.stopVideo().ended(0)
+      if ( _this.hasClass("no_open") ) {
+         e.preventDefault();
+      }
    });
-
-
 
    function onYouTubeIframeAPIReady() {
       // player 실행
@@ -35,9 +40,6 @@
          }
       });
    }
-
-
-
 
    function onPlayerStateChange(event) {
       if (event.data === 2) {

@@ -54,41 +54,47 @@
                   <div>
                      <img src="./images/main/Rectangle-1.jpg" alt="">
                   </div>
-                  <strong>Slacks pants</strong>
-                  <p>Slacks VS Dress Pants – What’s Difference and How To Care Them</p>
+                  <span>Styler Lab</span>
+                  <strong>Reduce Allergens</strong>
+                  <p>Seasonal Allergy Symptoms and Treatment</p>
                </li>
                <li class="swiper-slide">
                   <div>
                      <img src="./images/main/Rectangle-2.jpg" alt="">
                   </div>
-                  <strong>Bedding</strong>
-                  <p>How to Wash Pillows and Fluff Them Everyday</p>
+                  <span>Styler Lab</span>
+                  <strong>Home Dry Cleaning</strong>
+                  <p>What is Dry Cleaning? How to Dry Clean at Home</p>
                </li>
                <li class="swiper-slide no_open">
                   <div>
                      <img src="./images/main/Rectangle-3.jpg" alt="">
                   </div>
-                  <strong>Sanitize vs Disinfect</strong>
-                  <p>Sanitize, Disinfect, Clean Definition and 5 Facts You Didn’t Know</p>
+                  <span>Clothing Care</span>
+                  <strong>Slacks</strong>
+                  <p>Slacks VS Dress Pants – What’s Difference and How to Make Them Look Best</p>
                </li>
                <li class="swiper-slide no_open">
                   <div>
                      <img src="./images/main/Rectangle-3.jpg" alt="">
                   </div>
-                  <strong>Sanitize vs Disinfect</strong>
-                  <p>Sanitize, Disinfect, Clean Definition and 5 Facts You Didn’t Know</p>
+                  <span>Clothing Care</span>
+                  <strong>Sportswear</strong>
+                  <p>Fabric Guide: How to Care for Gore-Tex Clothes </p>
                </li>
                <li class="swiper-slide no_open">
                   <div>
                      <img src="./images/main/Rectangle-4.jpg" alt="">
                   </div>
-                  <strong>Dry cleaning</strong>
-                  <p>What is Dry Cleaning and How it works</p>
+                  <span>Clothing Care</span>
+                  <strong>A to Z</strong>
+                  <p>A list of items/fabrics that can be put in the Styler</p>
                </li>
                <li class="swiper-slide no_open">
                   <div>
                      <img src="./images/main/Rectangle-5.jpg" alt="">
                   </div>
+                  <span>Clothing Care</span>
                   <strong>Wrinkled clothes</strong>
                   <p>5 Easy Ways to Get Wrinkles Out of Clothes Without an Iron</p>
                </li>
@@ -468,7 +474,7 @@
    var player;
 
    /* 클릭 이벤트 */
-   li.on("click", function () {
+   li.on("click", function (e) {
       let _this = $(this);
       bol = true;
       videoData = _this.find(".video_data").data("url");
@@ -476,9 +482,14 @@
       $videoWrap.find(".img_wrap").attr("style", "background-image:url(" + imgUrl + ");");
       $videoWrap.find(".yt_player").attr("data-url", videoData);
       player.loadVideoById(videoData); // player 에 video data 넣기
+      // player.seekTo(0);
+      player.stopVideo();
+      // player.getPlayerState(-1);
+      // player.stopVideo().ended(0)
+      if ( _this.hasClass("no_open") ) {
+         e.preventDefault();
+      }
    });
-
-
 
    function onYouTubeIframeAPIReady() {
       // player 실행
@@ -489,9 +500,6 @@
          }
       });
    }
-
-
-
 
    function onPlayerStateChange(event) {
       if (event.data === 2) {

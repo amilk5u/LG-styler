@@ -143,13 +143,13 @@
       </div>
       <div class="inner_wrap video_cont">
          <div>
-            <div class="yt_play_btn"></div>
-            <div id="player"></div>
-            <!-- <div class="video_wrap">
-               <div class="yt_player" data-url="KGMx8DgLgwY"></div>
+            <!-- <div class="yt_play_btn"></div> -->
+            <!-- <div id="player"></div> -->
+            <div class="video_wrap">
+               <div id="player" data-url="KGMx8DgLgwY"></div>
                <div class="img_wrap" style="background-image: url(./images/main/video_img_01.jpg);"></div>
                <button type="button" class="yt_play_btn">play</button>
-            </div> -->
+            </div>
             <p>LG Styler Brand Film Video</p>
          </div>
          <div class="sb_video more_add">
@@ -164,7 +164,7 @@
                </li>
                <li class="">
                   <button type="button">
-                     <div>
+                     <div class="video_data" data-url="Dl2dZd0qACs">
                         <img src="./images/main/video_img_02.jpg" alt="">
                      </div>
                      <p>A to Z Video</p>
@@ -462,14 +462,7 @@
    var firstScriptTag = document.getElementsByTagName('script')[0];
    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-   var idAry = [],
-      urlAry = [],
-      objAry = [];
-   var objAry;
-   var $ytPlayerCustom = $(".yt_player");
-   var $ytPlayBtn = $(".yt_play_btn");
-   let videoData;
-   let imgUrl;
+   let videoData, imgUrl;
    const li = $(".sb_video").find("li");
    const $videoWrap = $("#AboutStyler").find(".video_wrap");
    var player;
@@ -477,28 +470,28 @@
    /* 클릭 이벤트 */
    li.on("click", function () {
       let _this = $(this);
+      bol = true;
       videoData = _this.find(".video_data").data("url");
-      // imgUrl = _this.find("img").attr("src");
-      // $videoWrap.find(".img_wrap").attr("style", "background-image:url(" + imgUrl + ");");
-      
-      // $videoWrap.find(".yt_player").attr("data-url", videoData);
-      player = new YT.Player('player', {
-         videoId: videoData,
-         events: {
-            'onStateChange': onPlayerStateChange
-         }
-      });
-      // onYouTubeIframeAPIReady(videoData)
+      imgUrl = _this.find("img").attr("src");
+      $videoWrap.find(".img_wrap").attr("style", "background-image:url(" + imgUrl + ");");
+      $videoWrap.find(".yt_player").attr("data-url", videoData);
+      player.loadVideoById(videoData); // player 에 video data 넣기
    });
 
-  /*  function onYouTubeIframeAPIReady(dataUrl) {
+
+
+   function onYouTubeIframeAPIReady() {
+      // player 실행
       player = new YT.Player('player', {
-         videoId: videoData,
+         videoId: "KGMx8DgLgwY",
          events: {
             'onStateChange': onPlayerStateChange
          }
       });
-   } */
+   }
+
+
+
 
    function onPlayerStateChange(event) {
       if (event.data === 2) {

@@ -132,24 +132,13 @@ function main() {
       // 이전 높이 보다 컸을 때 add 작을 때 remove 해라
       winSc > _prevH ? $topNav.addClass("on") : $topNav.removeClass("on")
 
-      /*  for (let i = 0; i < _sectionLength; i++) {
-          _sectionHeightArr.push($("section").eq(i + 1).outerHeight())
-          sectionTotalHeight += $("section").eq(i + 1).outerHeight()
-       } */
-
-
+      /* for (let i = 0; i < _sectionLength; i++) {
+         _sectionHeightArr.push($("section").eq(i + 1).outerHeight())
+         sectionTotalHeight += $("section").eq(i + 1).outerHeight()
+      } */
 
       $topNav.find("li button").removeClass("active");
-
-
-      if (winSc > ) {
-
-      } else {
-
-      }
-
-
-      /* if (winSc > $header.outerHeight() + $(".sec1").outerHeight() &&
+      if (winSc > $header.outerHeight() + $(".sec1").outerHeight() &&
          winSc < $AboutStyler.offset().top - $topNav.outerHeight()) {
          $topNav.find("li:eq(0) button").addClass("active");
 
@@ -167,20 +156,8 @@ function main() {
          $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() +
          $StylerLineup.outerHeight()) {
          $topNav.find("li:eq(3) button").addClass("active");
-      } */
+      }
    }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

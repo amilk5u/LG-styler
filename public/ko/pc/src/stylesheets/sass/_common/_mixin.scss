@@ -254,16 +254,17 @@ $mob-width: 768px;
 	}
 }
 
-// --------------------------------------------------
-
 // Tablet
 @mixin tablet {
 	@media screen and (max-width: #{$tablet-width}) {
 		@content;
 	}
 }
-
-// --------------------------------------------------
+@mixin tablet-b {
+	@media screen and (max-width: #{1200px}) {
+		@content;
+	}
+}
 
 // Mobile
 @mixin mobile {

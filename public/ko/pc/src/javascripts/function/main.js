@@ -12,24 +12,26 @@ function main() {
 
    function careTipsSlide() {
       // 윈도우 넓이가 768 미만이고, careTip가 undefined 가 아닐때
-      if (winW < 768 && careTips !== undefined) {
+      const winWidth = window.innerWidth;
+
+      if (winWidth < 768 && careTips !== undefined) {
          careTips.destroy(); // 중지
          careTips = undefined;
          // 윈도우가 768 이상이고, careTips 가 undefined 일때
-      } else if (winW >= 768 && careTips === undefined) {
+      } else if (winWidth >= 768 && careTips === undefined) {
          careTips = new Swiper(".care_tips", {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 24,
             breakpoints: {
-               768: {
+               769: {
                   slidesPerView: 3,  //브라우저가 768보다 클 때
                   spaceBetween: 24,
                },
-               1024: {
+               1025: {
                   slidesPerView: 4,  //브라우저가 1024보다 클 때
                   spaceBetween: 24,
                },
-               1600: {
+               1601: {
                   slidesPerView: 5,  //브라우저가 1024보다 클 때
                   spaceBetween: 24,
                },
@@ -47,15 +49,15 @@ function main() {
          draggable: true,
       },
       breakpoints: {
-         768: {
+         769: {
             slidesPerView: 2.6,
             spaceBetween: 20,
          },
-         900: {
+         1025: {
             slidesPerView: 3.6,
             spaceBetween: 20,
          },
-         1200: {
+         1201: {
             slidesPerView: 4.6,
             spaceBetween: 20,
          },
@@ -64,23 +66,23 @@ function main() {
 
    const articleLine = new Swiper(".article_line", {
       slidesPerView: 1,
-      spaceBetween: 40,
+      spaceBetween: 30,
       scrollbar: {
          el: ".swiper-scrollbar",
          draggable: true,
       },
       breakpoints: {
-         768: {
+         769: {
             slidesPerView: 2,
-            spaceBetween: 43,
+            spaceBetween: 30,
          },
-         900: {
+         1025: {
             slidesPerView: 3,
-            spaceBetween: 43,
+            spaceBetween: 30,
          },
-         1200: {
+         1201: {
             slidesPerView: 4,
-            spaceBetween: 43,
+            spaceBetween: 30,
          },
       },
    });
@@ -98,17 +100,53 @@ function main() {
           sectionTotalHeight += $("section").eq(i + 1).outerHeight()
        } */
 
-     /*  $topNav.find("li button").removeClass("active");
-      if (winSc > $header.outerHeight() + $(".sec1").outerHeight() && winSc < $AboutStyler.offset().top - $topNav.outerHeight()) {
+
+
+      $topNav.find("li button").removeClass("active");
+
+
+      if (winSc > ) {
+
+      } else {
+
+      }
+
+
+      /* if (winSc > $header.outerHeight() + $(".sec1").outerHeight() &&
+         winSc < $AboutStyler.offset().top - $topNav.outerHeight()) {
          $topNav.find("li:eq(0) button").addClass("active");
-      } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() + $ClothingCareTips.outerHeight() && winSc < $FAQ.offset().top - $topNav.outerHeight()) {
+
+      } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
+         $ClothingCareTips.outerHeight() &&
+         winSc < $FAQ.offset().top - $topNav.outerHeight()) {
          $topNav.find("li:eq(1) button").addClass("active");
-      } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() + $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() && winSc < $StylerLineup.offset().top - $topNav.outerHeight()) {
+
+      } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
+         $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() &&
+         winSc < $StylerLineup.offset().top - $topNav.outerHeight()) {
          $topNav.find("li:eq(2) button").addClass("active");
-      } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() + $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() + $StylerLineup.outerHeight()) {
+
+      } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
+         $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() +
+         $StylerLineup.outerHeight()) {
          $topNav.find("li:eq(3) button").addClass("active");
       } */
    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    // Top 네비게이션
    $topNav.find("li").on("click", function () {

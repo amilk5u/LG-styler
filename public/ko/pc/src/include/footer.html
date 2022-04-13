@@ -28,23 +28,23 @@
       // $videoWrap.find(".img_wrap").attr("style", "background-image:url(" + imgUrl + ");");
       
       // $videoWrap.find(".yt_player").attr("data-url", videoData);
-     /*  player = new YT.Player('player', {
-         videoId: videoData,
-         events: {
-            'onStateChange': onPlayerStateChange
-         }
-      }); */
-      onYouTubeIframeAPIReady(videoData)
-   });
-
-   function onYouTubeIframeAPIReady(dataUrl) {
       player = new YT.Player('player', {
          videoId: videoData,
          events: {
             'onStateChange': onPlayerStateChange
          }
       });
-   }
+      // onYouTubeIframeAPIReady(videoData)
+   });
+
+  /*  function onYouTubeIframeAPIReady(dataUrl) {
+      player = new YT.Player('player', {
+         videoId: videoData,
+         events: {
+            'onStateChange': onPlayerStateChange
+         }
+      });
+   } */
 
    function onPlayerStateChange(event) {
       if (event.data === 2) {

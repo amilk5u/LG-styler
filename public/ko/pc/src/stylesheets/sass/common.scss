@@ -7,7 +7,7 @@
 //기본 스타일
 ::selection { background:#ccc; color:$black; text-shadow:none; }
 ::-moz-selection { background:#ccc; color:$black; text-shadow:none; }
-img { vertical-align:top; image-rendering:-webkit-optimize-contrast;}
+img { vertical-align:top; image-rendering:auto;}
 caption { width:1px; height:1px; overflow:hidden; margin:-1px;}
 
 //hidden text
@@ -64,12 +64,6 @@ legend {width:0; height:0; overflow:hidden; display:inline-block; text-indent:-9
    .mo_elm { display: block; }
    .pc_elm { display: none; }
 }
-
-.sec-wrap {
-   border:1px solid red;
-   @include boxSizing;
-}
-
 
 /**
  * Swiper 8.0.7

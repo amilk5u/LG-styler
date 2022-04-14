@@ -15,10 +15,10 @@
    <script src="./javascripts/jquery-1.8.2.min.js"></script>
 </head>
 <body>
-   <!-- <div class="fix">0</div>
+   <div class="fix">0</div>
    <div class="guide_line">
       <span class="guide_center"></span>
-   </div> -->
+   </div>
    <div id="wrap">
       <!--header-->
       <header>header</header>
@@ -279,15 +279,18 @@
 <script src='https://www.youtube.com/iframe_api'></script>
 <script>
    let videoData, imgUrl, videoTxt;
+   const topNavH = $(".top_nav").outerHeight();
    const $videoWrap = $('#AboutStyler').find('.video_wrap'),
          $sbVideo = $('.sb_video').find('li');
 
+   // Sb Video Click (서브 비디오 클릭시 화면에 보여지게)
    $sbVideo.on('click', function (e) {
       let _this = $(this);
       videoData = _this.find('.video_data').data('url');
       imgUrl = _this.find('img').attr('src');
       videoTxt = _this.find('p').text();
       if (!_this.hasClass('no_open')) {
+         window.scrollTo({top: $(".video_cont").offset().top - topNavH, behavior: "smooth" })
          $videoWrap.find('.img_wrap').attr('style', 'background-image:url(' + imgUrl + ');');
          $videoWrap.find('.yt_player').attr('data-url', videoData);
          $videoWrap.next('p').text(videoTxt);
@@ -301,8 +304,8 @@
       }
    });
 
+   // Player Start
    function onYouTubeIframeAPIReady() {
-      // player 실행
       player = new YT.Player('player', {
          videoId: 'KGMx8DgLgwY',
          playerVars: { 'controls': 0 },
@@ -312,6 +315,7 @@
       });
    }
 
+   // Button Click Event
    function onPlayerStateChange(event) {
       if (event.data === 2) {
          TweenMax.to($(event.target.h).siblings('.img_wrap'), .3, { opacity: 1, display: 'block' });
@@ -324,6 +328,7 @@
       }
    }
 
+   // Video Button
    $('.yt_play_btn').on('click', function () {
       player.playVideo();
    });

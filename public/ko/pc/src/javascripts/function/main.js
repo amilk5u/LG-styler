@@ -6,19 +6,24 @@ function main() {
       $AboutStyler = $("#AboutStyler"),
       $FAQ = $("#FAQ"),
       $StylerLineup = $("#StylerLineup");
-   let _sectionLength = $("section").length - 1;
-   let careTips;
-   let yOffset;
+   let careTips, yOffset,
+      secWrap = [],
+      currentScene = 0;
+   let $topNavButton = $topNav.find("li");
+   let topNavHeight = $topNav.outerHeight();
+
+   $(".sec-wrap").each(function () {
+      secWrap.push($(this));
+   })
 
    function careTipsSlide() {
       // 윈도우 넓이가 768 미만이고, careTip가 undefined 가 아닐때
       const winWidth = window.innerWidth;
-
       if (winWidth < 768 && careTips !== undefined) {
          careTips.destroy(); // 중지
          careTips = undefined;
          // 윈도우가 768 이상이고, careTips 가 undefined 일때
-      } else if (winWidth >= 768 && careTips === undefined) {
+      } else if (winWidth > 768 && careTips === undefined) {
          careTips = new Swiper(".care_tips", {
             slidesPerView: 2,
             spaceBetween: 24,
@@ -87,82 +92,40 @@ function main() {
       },
    });
 
-   function tabNav() {
-      let _prevH = $header.outerHeight() + $visual.outerHeight();
-      // 이전 높이 보다 컸을 때 add 작을 때 remove 해라
-      winSc > _prevH ? $topNav.addClass("on") : $topNav.removeClass("on")
-      /*  $topNav.find("li button").removeClass("active");
-       if (winSc > $header.outerHeight() + $(".sec1").outerHeight() &&
-          winSc < $AboutStyler.offset().top - $topNav.outerHeight()) {
-          $topNav.find("li:eq(0) button").addClass("active");
- 
-       } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
-          $ClothingCareTips.outerHeight() &&
-          winSc < $FAQ.offset().top - $topNav.outerHeight()) {
-          $topNav.find("li:eq(1) button").addClass("active");
- 
-       } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
-          $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() &&
-          winSc < $StylerLineup.offset().top - $topNav.outerHeight()) {
-          $topNav.find("li:eq(2) button").addClass("active");
- 
-       } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
-          $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() +
-          $StylerLineup.outerHeight()) {
-          $topNav.find("li:eq(3) button").addClass("active");
-       } */
-   }
-
-
-
-   let secWrap = [];
-   let currentScene = 0;
-   function scrollLoop() {
-      let prevH = $(".sec1").outerHeight() + $("header").outerHeight();
+   function scrollNav() {
+      let prevHeight = $visual.outerHeight() + $header.outerHeight();
       let prevSecHeight = 0;
+      // 이전 높이 보다 컸을 때 add 작을 때 remove 해라
+      winSc > prevHeight ? $topNav.addClass("on") : $topNav.removeClass("on")
 
-      $(".sec-wrap").each(function () {
-         secWrap.push($(this));
-      })
-
-      if (yOffset > prevH) {
+      if (yOffset > prevHeight) {
          for (let i = 0; i < currentScene; i++) {
             prevSecHeight += secWrap[i].outerHeight();
          }
-         if (yOffset > prevSecHeight + prevH + secWrap[currentScene].outerHeight()) {
+         if (yOffset > prevSecHeight + prevHeight + secWrap[currentScene].outerHeight() - topNavHeight) {
             currentScene++;
          }
-         if (yOffset < prevSecHeight + prevH) {
+         if (yOffset < prevSecHeight + prevHeight - topNavHeight) {
             if (currentScene === 0) return;
             currentScene--;
          }
-         console.log(currentScene)
-         console.log("prevSecHeight :" + prevSecHeight)
-         console.log('prevH + prevSecHeight : '+prevH+prevSecHeight)
-         console.log('현재값' + secWrap[currentScene].outerHeight())
-         console.log(currentScene)
+         $topNav.find("li").find("button").removeClass("active")
+         $topNav.find("li").eq(currentScene).find("button").addClass("active")
+      } else {
+         $topNav.find("li").find("button").removeClass("active")
       }
    }
 
-
-   // Top 네비게이션
-   $topNav.find("li").on("click", function () {
-      $topNav.find("li button").removeClass("active");
+   // 네비게이션 클릭
+   $topNavButton.on("click", function () {
       let _this = $(this),
          _index = _this.index();
-
-      if (_index === 0) {
-         window.scrollTo({ top: $ClothingCareTips.offset().top - $topNav.outerHeight() + 1, behavior: "smooth" });
-         $topNav.find("li:eq(0) button").addClass("active");
-      } else if (_index === 1) {
-         window.scrollTo({ top: $AboutStyler.offset().top - $topNav.outerHeight() + 1, behavior: "smooth" });
-         $topNav.find("li:eq(1) button").addClass("active");
-      } else if (_index === 2) {
-         window.scrollTo({ top: $FAQ.offset().top - $topNav.outerHeight() + 1, behavior: "smooth" });
-         $topNav.find("li:eq(2) button").addClass("active");
-      } else if (_index === 3) {
-         window.scrollTo({ top: $StylerLineup.offset().top - $topNav.outerHeight() + 1, behavior: "smooth" });
-         $topNav.find("li:eq(3) button").addClass("active");
+      $topNav.find("li button").removeClass("active");
+      if (_index !== 0) {
+         TweenMax.to($("html, body"), .5,{ scrollTop:secWrap[_index].offset().top + 1 - topNavHeight });
+      } else {
+         window.scrollTo({ top: secWrap[0].offset().top + 1, behavior: "smooth" });
+         TweenMax.to($("html, body"), .5,{ scrollTop:secWrap[_index].offset().top + 1});
       }
    });
 
@@ -170,7 +133,6 @@ function main() {
    // Faq 질문 답변 클릭
    function faqAction() {
       const $questDt = $FAQ.find("dt");
-
       $questDt.on("click", function () {
          let _this = $(this);
          let $questionDl = _this.parent(),
@@ -187,7 +149,7 @@ function main() {
       })
    }
 
-   // sb_video more_add 추가하기
+   // 비디오 더보기 more_add 
    const $sbVideo = $AboutStyler.find(".sb_video"),
       $moreVideoBtn = $AboutStyler.find(".more_video_btn button");
 
@@ -206,17 +168,14 @@ function main() {
    $(window).on("resize", function () {
       careTipsSlide();
    });
-
-   window.addEventListener('scroll', () => {
+   window.addEventListener("scroll", function () {
       yOffset = window.pageYOffset;
       $(".fix").text(winSc);
-      tabNav();
-      scrollLoop();
+      scrollNav();
    });
 
    function init() {
       careTipsSlide();
-      tabNav();
       faqAction();
    }
    init();

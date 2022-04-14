@@ -65,6 +65,11 @@ legend {width:0; height:0; overflow:hidden; display:inline-block; text-indent:-9
    .pc_elm { display: none; }
 }
 
+.sec-wrap {
+   border:1px solid red;
+   @include boxSizing;
+}
+
 
 /**
  * Swiper 8.0.7

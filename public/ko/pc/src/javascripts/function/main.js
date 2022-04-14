@@ -8,6 +8,7 @@ function main() {
       $StylerLineup = $("#StylerLineup");
    let _sectionLength = $("section").length - 1;
    let careTips;
+   let yOffset;
 
    function careTipsSlide() {
       // 윈도우 넓이가 768 미만이고, careTip가 undefined 가 아닐때
@@ -38,7 +39,7 @@ function main() {
          });
       }
    }
-   
+
 
    const lineupSlide = new Swiper(".lineup_slide", {
       slidesPerView: 1.6,
@@ -87,38 +88,60 @@ function main() {
    });
 
    function tabNav() {
-      // const _sectionHeightArr = [];
-      // let sectionTotalHeight = 0;
-
       let _prevH = $header.outerHeight() + $visual.outerHeight();
       // 이전 높이 보다 컸을 때 add 작을 때 remove 해라
       winSc > _prevH ? $topNav.addClass("on") : $topNav.removeClass("on")
+      /*  $topNav.find("li button").removeClass("active");
+       if (winSc > $header.outerHeight() + $(".sec1").outerHeight() &&
+          winSc < $AboutStyler.offset().top - $topNav.outerHeight()) {
+          $topNav.find("li:eq(0) button").addClass("active");
+ 
+       } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
+          $ClothingCareTips.outerHeight() &&
+          winSc < $FAQ.offset().top - $topNav.outerHeight()) {
+          $topNav.find("li:eq(1) button").addClass("active");
+ 
+       } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
+          $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() &&
+          winSc < $StylerLineup.offset().top - $topNav.outerHeight()) {
+          $topNav.find("li:eq(2) button").addClass("active");
+ 
+       } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
+          $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() +
+          $StylerLineup.outerHeight()) {
+          $topNav.find("li:eq(3) button").addClass("active");
+       } */
+   }
 
-      /* for (let i = 0; i < _sectionLength; i++) {
-         _sectionHeightArr.push($("section").eq(i + 1).outerHeight())
-         sectionTotalHeight += $("section").eq(i + 1).outerHeight()
-      } */
 
-     /*  $topNav.find("li button").removeClass("active");
-      if (winSc > $header.outerHeight() + $(".sec1").outerHeight() &&
-         winSc < $AboutStyler.offset().top - $topNav.outerHeight()) {
-         $topNav.find("li:eq(0) button").addClass("active");
 
-      } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
-         $ClothingCareTips.outerHeight() &&
-         winSc < $FAQ.offset().top - $topNav.outerHeight()) {
-         $topNav.find("li:eq(1) button").addClass("active");
+   let secWrap = [];
+   let currentScene = 0;
+   function scrollLoop() {
+      let prevH = $(".sec1").outerHeight() + $("header").outerHeight();
+      let prevSecHeight = 0;
 
-      } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
-         $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() &&
-         winSc < $StylerLineup.offset().top - $topNav.outerHeight()) {
-         $topNav.find("li:eq(2) button").addClass("active");
+      $(".sec-wrap").each(function () {
+         secWrap.push($(this));
+      })
 
-      } else if (winSc > $header.outerHeight() + $(".sec1").outerHeight() +
-         $ClothingCareTips.outerHeight() + $AboutStyler.outerHeight() +
-         $StylerLineup.outerHeight()) {
-         $topNav.find("li:eq(3) button").addClass("active");
-      } */
+      if (yOffset > prevH) {
+         for (let i = 0; i < currentScene; i++) {
+            prevSecHeight += secWrap[i].outerHeight();
+         }
+         if (yOffset > prevSecHeight + prevH + secWrap[currentScene].outerHeight()) {
+            currentScene++;
+         }
+         if (yOffset < prevSecHeight + prevH) {
+            if (currentScene === 0) return;
+            currentScene--;
+         }
+         console.log(currentScene)
+         console.log("prevSecHeight :" + prevSecHeight)
+         console.log('prevH + prevSecHeight : '+prevH+prevSecHeight)
+         console.log('현재값' + secWrap[currentScene].outerHeight())
+         console.log(currentScene)
+      }
    }
 
 
@@ -171,39 +194,26 @@ function main() {
    $moreVideoBtn.on("click", function () {
       let $moreVideoBtnH = $moreVideoBtn.outerHeight();
       let $sbVideoH = $sbVideo.find("li").outerHeight();
-      if ( !$sbVideo.hasClass("more_add") ) {
+      if (!$sbVideo.hasClass("more_add")) {
          $sbVideo.addClass("more_add");
-         $sbVideo.height($moreVideoBtnH+ $sbVideoH);
+         $sbVideo.height($moreVideoBtnH + $sbVideoH);
       } else {
          $sbVideo.removeClass("more_add");
          $sbVideo.height("inherit");
       }
    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    $(window).on("resize", function () {
       careTipsSlide();
    });
-   $window.scroll(function () {
+
+   window.addEventListener('scroll', () => {
+      yOffset = window.pageYOffset;
       $(".fix").text(winSc);
       tabNav();
-   })
+      scrollLoop();
+   });
+
    function init() {
       careTipsSlide();
       tabNav();

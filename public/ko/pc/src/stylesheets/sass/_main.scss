@@ -41,13 +41,12 @@
       }
    }
    .sec2 {
+      position: relative; padding:em(100) 0 0;
       .top_nav { 
          width: 100%; height:em(100); text-align: center; margin: 0 auto; padding: em(27) 0; border-top: 1px solid #F0F0F0;
+         position: absolute; top:0;
          border-bottom: 1px solid #F0F0F0; background-color: $white; 
-         &.on { 
-            position: fixed; top: 0; left: 0; z-index: 3; 
-            & + .inner_wrap  { margin: em(100) auto 0; }
-         }
+         &.on  { position: fixed; top: 0; left: 0; z-index: 3; }
          @include boxSizing;
          ul { display: block; margin: 0 auto; width: fit-content; @extend %clearfix; }
          li {
@@ -55,7 +54,7 @@
             &:first-of-type { margin: 0; }
             button {
                display: block; padding: em(13) em(40); border: em(1) solid #D9D9D9; font-size: em(18); 
-               color: #848484; font-weight: $semiBold; position: relative;
+               color: #848484; font-weight: $regular; position: relative;
                @include boxSizing;
                @include borderRadius(em(50)); 
                &.active {

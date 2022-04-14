@@ -3,12 +3,10 @@
 <!--//footer-->
 <script src='https://www.youtube.com/iframe_api'></script>
 <script>
-   let tag = document.createElement('script');
    let videoData, imgUrl, videoTxt;
    const $videoWrap = $('#AboutStyler').find('.video_wrap'),
-      $sbVideo = $('.sb_video').find('li');
+         $sbVideo = $('.sb_video').find('li');
 
-   /* 클릭 이벤트 */
    $sbVideo.on('click', function (e) {
       let _this = $(this);
       videoData = _this.find('.video_data').data('url');

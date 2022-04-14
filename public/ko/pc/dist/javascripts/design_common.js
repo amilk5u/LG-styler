@@ -36,7 +36,6 @@ function layout() {
    
 }
 function main() {
-   const _htmlH = $("html,body").height();
    const $header = $("header"),
       $topNav = $(".top_nav"),
       $visual = $("#visual"),
@@ -76,7 +75,7 @@ function main() {
          });
       }
    }
-   careTipsSlide();
+   
 
    const lineupSlide = new Swiper(".lineup_slide", {
       slidesPerView: 1.6,
@@ -160,8 +159,6 @@ function main() {
    }
 
 
-
-
    // Top 네비게이션
    $topNav.find("li").on("click", function () {
       $topNav.find("li button").removeClass("active");
@@ -209,7 +206,15 @@ function main() {
       $moreVideoBtn = $AboutStyler.find(".more_video_btn button");
 
    $moreVideoBtn.on("click", function () {
-      !$sbVideo.hasClass("more_add") ? $sbVideo.addClass("more_add") : $sbVideo.removeClass("more_add")
+      let $moreVideoBtnH = $moreVideoBtn.outerHeight();
+      let $sbVideoH = $sbVideo.find("li").outerHeight();
+      if ( !$sbVideo.hasClass("more_add") ) {
+         $sbVideo.addClass("more_add");
+         $sbVideo.height($moreVideoBtnH+ $sbVideoH);
+      } else {
+         $sbVideo.removeClass("more_add");
+         $sbVideo.height("inherit");
+      }
    });
 
 
@@ -237,6 +242,7 @@ function main() {
       tabNav();
    })
    function init() {
+      careTipsSlide();
       tabNav();
       faqAction();
    }

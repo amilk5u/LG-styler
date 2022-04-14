@@ -1,40 +1,38 @@
 <!--footer-->
 <footer>footer</footer>
 <!--//footer-->
-<!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+<script src='https://www.youtube.com/iframe_api'></script>
 <script>
-   var tag = document.createElement('script');
-   tag.src = "https://www.youtube.com/iframe_api";
-   var firstScriptTag = document.getElementsByTagName('script')[0];
-   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-   let videoData, imgUrl;
-   const li = $(".sb_video").find("li");
-   const $videoWrap = $("#AboutStyler").find(".video_wrap");
-   var player;
+   let tag = document.createElement('script');
+   let videoData, imgUrl, videoTxt;
+   const $videoWrap = $('#AboutStyler').find('.video_wrap'),
+      $sbVideo = $('.sb_video').find('li');
 
    /* 클릭 이벤트 */
-   li.on("click", function (e) {
+   $sbVideo.on('click', function (e) {
       let _this = $(this);
-      bol = true;
-      videoData = _this.find(".video_data").data("url");
-      imgUrl = _this.find("img").attr("src");
-      $videoWrap.find(".img_wrap").attr("style", "background-image:url(" + imgUrl + ");");
-      $videoWrap.find(".yt_player").attr("data-url", videoData);
-      player.loadVideoById(videoData); // player 에 video data 넣기
-      // player.seekTo(0);
-      player.stopVideo();
-      // player.getPlayerState(-1);
-      // player.stopVideo().ended(0)
-      if ( _this.hasClass("no_open") ) {
-         e.preventDefault();
+      videoData = _this.find('.video_data').data('url');
+      imgUrl = _this.find('img').attr('src');
+      videoTxt = _this.find('p').text();
+      if (!_this.hasClass('no_open')) {
+         $videoWrap.find('.img_wrap').attr('style', 'background-image:url(' + imgUrl + ');');
+         $videoWrap.find('.yt_player').attr('data-url', videoData);
+         $videoWrap.next('p').text(videoTxt);
+         player.loadVideoById(videoData); // player 에 video data 넣기
+         // player.seekTo(0); // 0 초
+         player.stopVideo();
+         // player.getPlayerState(-1);
+         // player.stopVideo().ended(0)
+      } else {
+         e.stopPropagation();
       }
    });
 
    function onYouTubeIframeAPIReady() {
       // player 실행
       player = new YT.Player('player', {
-         videoId: "KGMx8DgLgwY",
+         videoId: 'KGMx8DgLgwY',
+         playerVars: { 'controls': 0 },
          events: {
             'onStateChange': onPlayerStateChange
          }
@@ -43,22 +41,22 @@
 
    function onPlayerStateChange(event) {
       if (event.data === 2) {
-         TweenMax.to($(event.target.h).siblings(".img_wrap"), .3, { opacity: 1, display: "block" });
-         TweenMax.to($(event.target.h).siblings(".yt_play_btn"), .3, { opacity: 1, display: "block" });
+         TweenMax.to($(event.target.h).siblings('.img_wrap'), .3, { opacity: 1, display: 'block' });
+         TweenMax.to($(event.target.h).siblings('.yt_play_btn'), .3, { opacity: 1, display: 'block' });
       } else if (event.data === 1) {
-         TweenMax.to($(event.target.h).siblings(".img_wrap"), .3, { opacity: 0, display: "none" });
-         TweenMax.to($(event.target.h).siblings(".yt_play_btn"), .3, { opacity: 0, display: "none" });
+         TweenMax.to($(event.target.h).siblings('.img_wrap'), .3, { opacity: 0, display: 'none' });
+         TweenMax.to($(event.target.h).siblings('.yt_play_btn'), .3, { opacity: 0, display: 'none' });
       } else if (event.data === 3 || event.data === 5) {
          return false;
       }
    }
 
-   $(".yt_play_btn").on("click", function () {
+   $('.yt_play_btn').on('click', function () {
       player.playVideo();
    });
 </script>
-<script src="./javascripts/plugin.js"></script>
-<script src="./javascripts/design_common.js"></script>
+<script src='./javascripts/plugin.js'></script>
+<script src='./javascripts/design_common.js'></script>
 </div>
 </body>
 </html>

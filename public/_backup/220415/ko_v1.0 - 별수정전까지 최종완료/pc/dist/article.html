@@ -15,10 +15,10 @@
    <script src="./javascripts/jquery-1.8.2.min.js"></script>
 </head>
 <body>
-   <div class="fix">0</div>
+   <!-- <div class="fix">0</div>
    <div class="guide_line">
       <span class="guide_center"></span>
-   </div>
+   </div> -->
    <div id="wrap">
       <!--header-->
       <header>header</header>
@@ -290,7 +290,7 @@
       imgUrl = _this.find('img').attr('src');
       videoTxt = _this.find('p').text();
       if (!_this.hasClass('no_open')) {
-         window.scrollTo({top: $(".video_cont").offset().top - topNavH, behavior: "smooth" })
+         TweenMax.to($("html, body"), .3,{ scrollTop:$(".video_cont").offset().top - topNavH});
          $videoWrap.find('.img_wrap').attr('style', 'background-image:url(' + imgUrl + ');');
          $videoWrap.find('.yt_player').attr('data-url', videoData);
          $videoWrap.next('p').text(videoTxt);
@@ -332,6 +332,8 @@
    $('.yt_play_btn').on('click', function () {
       player.playVideo();
    });
+
+   
 </script>
 <script src='./javascripts/plugin.js'></script>
 <script src='./javascripts/design_common.js'></script>
